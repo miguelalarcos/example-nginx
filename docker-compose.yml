@@ -4,10 +4,13 @@ services:
     build: .
     links:
       - api
+      - websocket
     depends_on:
       - api
+      - websocket
     ports:
       - "9000:9000"
+      - "9001:9001"
   api:
     build:
       context: .
@@ -17,4 +20,11 @@ services:
     command: python api.py
     stdin_open: true
     tty: true
-
+  websocket:
+    build:
+      context: .
+      dockerfile: Dockerfile-websocket
+    #ports: 
+    command: python websocket-s.py
+    stdin_open: true
+    tty: true
