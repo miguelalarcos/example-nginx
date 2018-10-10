@@ -11,6 +11,8 @@ services:
     ports:
       - "9000:9000"
       - "9001:9001"
+    volumes:
+       - /home/miguel/dev/nginx-projects/api:/etc/nginx/
   api:
     build:
       context: .
